@@ -758,24 +758,38 @@
                   We can write and read data from those variables. Now lets print data coming from the requester:
                 </p>
 
+                <h1 style="color: #ff0000; font-weight: bold" >Andre, explica aqui melhor o que é "request.on('readable'" e "request.on('end',". Fala também que esse código é a primeira parte, e que o cliente vem logo depois.</h1>
+
                 <!-- HTML generated using hilite.me -->
                 <div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">http</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;http&#39;</span><span style="color: #d0d0d0">);</span>
 
-<span style="color: #d0d0d0">http.createServer(</span><span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response){</span>
-  <span style="color: #d0d0d0">response.writeHead(</span><span style="color: #3677a9">200</span><span style="color: #d0d0d0">);</span>
-  <span style="color: #d0d0d0">request.on(</span><span style="color: #ed9d13">&#39;readable&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
-    <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">null</span><span style="color: #d0d0d0">;</span>
-    <span style="color: #6ab825; font-weight: bold">while</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">null</span> <span style="color: #d0d0d0">!==</span> <span style="color: #d0d0d0">(data</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.read())){</span>
-      <span style="color: #d0d0d0">console.log(data.toString());</span>
+<span style="color: #d0d0d0">http.createServer(</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response)</span>
+    <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">response.writeHead(</span><span style="color: #3677a9">200</span><span style="color: #d0d0d0">);</span>
+        <span style="color: #d0d0d0">response.write(</span><span style="color: #ed9d13">&#39;Thanks for sharing ...&#39;</span><span style="color: #d0d0d0">);</span>
+        <span style="color: #d0d0d0">request.on(</span><span style="color: #ed9d13">&#39;readable&#39;</span><span style="color: #d0d0d0">,</span>
+            <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+                <span style="color: #d0d0d0">console.log(</span><span style="color: #ed9d13">&#39;Reading&#39;</span><span style="color: #d0d0d0">);</span>
+                <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">null</span><span style="color: #d0d0d0">;</span>
+                <span style="color: #6ab825; font-weight: bold">while</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">null</span> <span style="color: #d0d0d0">!==</span> <span style="color: #d0d0d0">(data</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.read())){</span>
+                    <span style="color: #d0d0d0">console.log(data.toString());</span>
+                <span style="color: #d0d0d0">}</span>
+            <span style="color: #d0d0d0">}</span>
+        <span style="color: #d0d0d0">);</span>
+        <span style="color: #d0d0d0">request.on(</span><span style="color: #ed9d13">&#39;end&#39;</span><span style="color: #d0d0d0">,</span>
+            <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+                <span style="color: #d0d0d0">console.log(</span><span style="color: #ed9d13">&#39;Ending&#39;</span><span style="color: #d0d0d0">);</span>
+                <span style="color: #d0d0d0">response.end();</span>
+            <span style="color: #d0d0d0">}</span>
+        <span style="color: #d0d0d0">);</span>
     <span style="color: #d0d0d0">}</span>
-  <span style="color: #d0d0d0">});</span>
-  <span style="color: #d0d0d0">request.on(</span><span style="color: #ed9d13">&#39;end&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
-    <span style="color: #d0d0d0">response.end();</span>
-  <span style="color: #d0d0d0">});</span>
-<span style="color: #d0d0d0">}).listen(</span><span style="color: #3677a9">8080</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
-  <span style="color: #d0d0d0">console.log(</span><span style="color: #ed9d13">&#39;Listening on port 8080...&#39;</span><span style="color: #d0d0d0">);</span>
-<span style="color: #d0d0d0">});</span>
+<span style="color: #d0d0d0">).listen(</span><span style="color: #3677a9">8080</span><span style="color: #d0d0d0">,</span>  <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">()</span>
+    <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">console.log(</span><span style="color: #ed9d13">&#39;Listening on port 8080...&#39;</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">);</span>
 </pre></div>
+
                 <div class="ac-caption">Reading Data From Requester</div>
 
                 <p align="justify">
@@ -793,24 +807,27 @@
                 </p>
 
                 <!-- HTML generated using hilite.me -->
-                <div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">http</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;http&#39;</span><span style="color: #d0d0d0">);</span>
+                <!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">http</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;http&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">StringDecoder</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;string_decoder&#39;</span><span style="color: #d0d0d0">).StringDecoder;</span>
 
 <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">options</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span>
-  <span style="color: #d0d0d0">host:</span> <span style="color: #ed9d13">&#39;localhost&#39;</span><span style="color: #d0d0d0">,</span>
-  <span style="color: #d0d0d0">port:</span> <span style="color: #3677a9">8080</span><span style="color: #d0d0d0">.</span>
-  <span style="color: #d0d0d0">path:</span> <span style="color: #ed9d13">&#39;/&#39;</span><span style="color: #d0d0d0">,</span>
-  <span style="color: #d0d0d0">method:</span> <span style="color: #ed9d13">&#39;POST&#39;</span>
+    <span style="color: #d0d0d0">host:</span> <span style="color: #ed9d13">&#39;localhost&#39;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #d0d0d0">port:</span> <span style="color: #3677a9">8080</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #d0d0d0">path:</span> <span style="color: #ed9d13">&#39;/&#39;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #d0d0d0">method:</span> <span style="color: #ed9d13">&#39;POST&#39;</span>
 <span style="color: #d0d0d0">};</span>
 
 <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">request</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">http.request(options,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(response){</span>
-  <span style="color: #d0d0d0">response.on(</span><span style="color: #ed9d13">&#39;data&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
-    <span style="color: #d0d0d0">console.log(data);</span>
-  <span style="color: #d0d0d0">});</span>
+    <span style="color: #d0d0d0">response.on(</span><span style="color: #ed9d13">&#39;data&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(data){</span>
+        <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">decoder</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">StringDecoder(</span><span style="color: #ed9d13">&#39;utf8&#39;</span><span style="color: #d0d0d0">);</span>
+        <span style="color: #d0d0d0">console.log(</span> <span style="color: #d0d0d0">decoder.write(data));</span>
+    <span style="color: #d0d0d0">});</span>
 <span style="color: #d0d0d0">});</span>
 
 <span style="color: #d0d0d0">request.write(</span><span style="color: #ed9d13">&#39;Are you alive?&#39;</span><span style="color: #d0d0d0">);</span>
 <span style="color: #d0d0d0">request.end();</span>
 </pre></div>
+
                 <div class="ac-caption">Sending Data To The Server</div>
               </div>
 						</section>

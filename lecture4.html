@@ -128,7 +128,7 @@
               </header>
 
               <p align="justify">
-                Now that I've built into your soul that Grunt is cool lets start understanding how it works: First, we
+                Now that I've built into your soul that Grunt is cool lets start understanding how it works: first, we
                 need to install it:
               </p>
 
@@ -136,6 +136,8 @@
               <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">$</span> <span style="color: #a6e22e">npm</span> <span style="color: #a6e22e">install</span> <span style="color: #a6e22e">grunt</span>
 </pre></div>
               <div class="ac-caption">Installing Grunt</div>
+
+              <h1 style="color: #ff0000; font-weight: bold" >Andre, o que é grunt-cli? </h1>
 
               <p align="justify">
                 We have to install the CLI from Grunt too, that allows us to user the command <b>grunt</b> in our terminals.
@@ -235,7 +237,7 @@
     <span style="color: #a6e22e">express</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
       <span style="color: #a6e22e">script</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;index.js&#39;</span><span style="color: #f8f8f2">,</span>
       <span style="color: #a6e22e">options</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #a6e22e">watch</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;src&#39;</span><span style="color: #f8f8f2">],</span>
+        <span style="color: #a6e22e">watch</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;./&#39;</span><span style="color: #f8f8f2">],</span>
         <span style="color: #a6e22e">cwd</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;src&#39;</span>
       <span style="color: #f8f8f2">}</span>
     <span style="color: #f8f8f2">}</span>
@@ -251,6 +253,7 @@
 
               <p align="justify">
                 And finally we call <b>grunt</b>.
+                Pay attention that Gruntfile.js is in the root of your project. It will look at changes on file ./src/index.js
               </p>
 
               <!-- HTML generated using hilite.me -->
@@ -314,6 +317,8 @@
                 <li><a href="https://www.npmjs.com/package/supertest">Supertest</a> as our library to make requests in the test environment;</li>
                 <li><a href="https://www.npmjs.com/package/blanket">Blanket</a> for test coverage.</li>
               </ul>
+
+<h1 style="color: #ff0000; font-weight: bold" >Andre, pulei essa parte, depois dá uma revisada vc mesmo </h1>
 
               <header>
                 <h4>Configuring Grunt</h4>
@@ -562,7 +567,7 @@
 
               <p align="justify">
                 Why it is so popular? Well, with this concept you can have you RESTful service stay stateless however with
-                the ability to know if the requester is trustable or not, using a public network. The core conpect is simple:
+                the ability to know if the requester is trustable or not, using a public network. The core concept is simple:
                 Our API will provide to the requester a token. This token is responsible to define if the requester is trustable
                 or not. We do this by checking the correctness of this token. As the API is providing this little guy we
                 can encrypt information using our favorite algorithm with our hard-to-decode secret that will be private.
@@ -590,8 +595,8 @@
               </p>
 
               <ul>
-                <li><a href="https://github.com/expressjs/cookie-parser">Cookie-Parser</a></li>
-                <li><a href="https://github.com/auth0/node-jsonwebtoken">JsonWebToken</a></li>
+                <li><a href="https://github.com/expressjs/cookie-parser">Cookie-Parser</a>, or just run "npm install cookie-parser"</li>
+                <li><a href="https://github.com/auth0/node-jsonwebtoken">JsonWebToken</a>, or just run "npm install jsonwebtoken"</li>
               </ul>
 
               <header>
@@ -600,7 +605,7 @@
 
               <p align="justify">
                 I've already told you what I'm about to code and I don't want to be redundant, so lets get directly to
-                what matters
+                what matters. Create a auth.js file with the content below.
               </p>
 
               <!-- HTML generated using hilite.me -->
@@ -651,104 +656,110 @@
 
               <p align="justify">
                 Now I'm going to add these middleware in the Dog Service code. I will add it in the <i>dog</i> route
-                since it has the <b>DELTE</b>, <b>POST</b> and <b>PUT</b> methods.
+                since it has the <b>DELETE</b>, <b>POST</b> and <b>PUT</b> methods.
               </p>
 
-              <!-- HTML generated using hilite.me -->
-              <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">bodyParser</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;body-parser&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">parseUrlencoded</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">bodyParser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">urlencoded</span><span style="color: #f8f8f2">({</span><span style="color: #a6e22e">extend</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">});</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">express</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;express&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">router</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">express</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Router</span><span style="color: #f8f8f2">();</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">dogs</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./dogs&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">auth</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./auth&#39;</span><span style="color: #f8f8f2">);</span>
+              <!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">bodyParser</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;body-parser&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">parseUrlencoded</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">bodyParser.urlencoded({extend:</span> <span style="color: #6ab825; font-weight: bold">false</span><span style="color: #d0d0d0">});</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">express</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;express&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">router</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">express.Router();</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">dogs</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./dogs&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">Dog</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./Dog&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">auth</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./auth&#39;</span><span style="color: #d0d0d0">);</span>
 
-<span style="color: #a6e22e">router</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">use</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">auth</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isAuthenticated</span><span style="color: #f8f8f2">);</span>
-<span style="color: #a6e22e">router</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">use</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">parseUrlencoded</span><span style="color: #f8f8f2">);</span>
+<span style="color: #d0d0d0">router.use(auth.isAuthenticated);</span>
+<span style="color: #d0d0d0">router.use(parseUrlencoded);</span>
 
-<span style="color: #a6e22e">router</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">route</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/&#39;</span><span style="color: #f8f8f2">)</span>
-  <span style="color: #f8f8f2">.</span><span style="color: #a6e22e">post</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">request</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">){</span>
-    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">data</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">request</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">;</span>
-    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">newDog</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Dog</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">data</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">name</span><span style="color: #f8f8f2">);</span>
+<span style="color: #d0d0d0">router.route(</span><span style="color: #ed9d13">&#39;/&#39;</span><span style="color: #d0d0d0">)</span>
+    <span style="color: #d0d0d0">.post(</span><span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response){</span>
+        <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.body;</span>
+        <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">newDog</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">Dog(data.name);</span>
 
-    <span style="color: #a6e22e">dogs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">push</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newDog</span><span style="color: #f8f8f2">);</span>
+        <span style="color: #d0d0d0">dogs.push(newDog);</span>
 
-    <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">status</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">201</span><span style="color: #f8f8f2">).</span><span style="color: #a6e22e">json</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;Dog added! Brian loved it.&#39;</span><span style="color: #f8f8f2">);</span>
-  <span style="color: #f8f8f2">})</span>
-  <span style="color: #f8f8f2">.</span><span style="color: #a6e22e">put</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">request</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">){</span>
-    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">dog</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">request</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">;</span>
-    <span style="color: #66d9ef">for</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">x</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">dogs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">length</span> <span style="color: #f92672">-</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">x</span> <span style="color: #f92672">&gt;=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">x</span><span style="color: #f92672">--</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-      <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">dogs</span><span style="color: #f8f8f2">[</span><span style="color: #a6e22e">x</span><span style="color: #f8f8f2">].</span><span style="color: #a6e22e">getName</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">===</span> <span style="color: #a6e22e">dog</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">name</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #a6e22e">dogs</span><span style="color: #f8f8f2">[</span><span style="color: #a6e22e">x</span><span style="color: #f8f8f2">].</span><span style="color: #a6e22e">setName</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">dog</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">newName</span><span style="color: #f8f8f2">);</span>
-      <span style="color: #f8f8f2">}</span>
-    <span style="color: #f8f8f2">}</span>
+        <span style="color: #d0d0d0">response.status(</span><span style="color: #3677a9">201</span><span style="color: #d0d0d0">).json(</span><span style="color: #ed9d13">&#39;Dog added! Brian loved it.&#39;</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #d0d0d0">})</span>
+    <span style="color: #d0d0d0">.put(</span><span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response){</span>
+        <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">dog</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.body;</span>
+        <span style="color: #6ab825; font-weight: bold">for</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">dogs.length</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&gt;=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">x--)</span> <span style="color: #d0d0d0">{</span>
+            <span style="color: #6ab825; font-weight: bold">if</span><span style="color: #d0d0d0">(dogs[x].getName()</span> <span style="color: #d0d0d0">===</span> <span style="color: #d0d0d0">dog.name)</span> <span style="color: #d0d0d0">{</span>
+                <span style="color: #d0d0d0">dogs[x].setName(dog.newName);</span>
+            <span style="color: #d0d0d0">}</span>
+        <span style="color: #d0d0d0">}</span>
 
-    <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">sendStatus</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">200</span><span style="color: #f8f8f2">);</span>
-  <span style="color: #f8f8f2">});</span>
+        <span style="color: #d0d0d0">response.sendStatus(</span><span style="color: #3677a9">200</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #d0d0d0">});</span>
 
-<span style="color: #a6e22e">router</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">route</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/:doggyId&#39;</span><span style="color: #f8f8f2">)</span>
-  <span style="color: #f8f8f2">.</span><span style="color: #66d9ef">delete</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">request</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">){</span>
-    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">doggyId</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">request</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">params</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">doggyId</span><span style="color: #f8f8f2">;</span>
+<span style="color: #d0d0d0">router.route(</span><span style="color: #ed9d13">&#39;/:doggyId&#39;</span><span style="color: #d0d0d0">)</span>
+    <span style="color: #d0d0d0">.</span><span style="color: #6ab825; font-weight: bold">delete</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response){</span>
+        <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">doggyId</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.params.doggyId;</span>
 
-    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">dog</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">dogs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">splice</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">doggyId</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">];</span>
+        <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">dog</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">dogs.splice(doggyId,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">)[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">];</span>
 
-    <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">json</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">dog</span><span style="color: #f8f8f2">);</span>
-  <span style="color: #f8f8f2">});</span>
+        <span style="color: #d0d0d0">response.json(dog);</span>
+    <span style="color: #d0d0d0">});</span>
 
-<span style="color: #a6e22e">module</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">exports</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">router</span><span style="color: #f8f8f2">;</span>
+<span style="color: #d0d0d0">module.exports</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">router;</span>
 </pre></div>
+
               <div class="ac-caption">Dog Service With Authentication</div>
 
               <p align="justify">
                 Now I will create a login route.
               </p>
 
-              <!-- HTML generated using hilite.me -->
-              <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">express</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;express&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">router</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">express</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Router</span><span style="color: #f8f8f2">();</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">dogs</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./dogs&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">auth</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./auth&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">bodyParser</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;body-parser&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">parseUrlencoded</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">bodyParser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">urlencoded</span><span style="color: #f8f8f2">({</span><span style="color: #a6e22e">extended</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">});</span>
+              <!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">express</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;express&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">router</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">express.Router();</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">dogs</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./dogs&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">auth</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./auth&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">bodyParser</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;body-parser&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">parseUrlencoded</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">bodyParser.urlencoded({extended:</span> <span style="color: #6ab825; font-weight: bold">false</span><span style="color: #d0d0d0">});</span>
 
-<span style="color: #a6e22e">router</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">route</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/&#39;</span><span style="color: #f8f8f2">)</span>
-  <span style="color: #f8f8f2">.</span><span style="color: #a6e22e">post</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">parseUrlencoded</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">request</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">){</span>
-    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">data</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">request</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">;</span>
+<span style="color: #d0d0d0">router.route(</span><span style="color: #ed9d13">&#39;/&#39;</span><span style="color: #d0d0d0">)</span>
+    <span style="color: #d0d0d0">.post(parseUrlencoded,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response){</span>
+        <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.body;</span>
 
-    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">data</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #a6e22e">data</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">doggyId</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #a6e22e">data</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">doggyId</span> <span style="color: #f92672">&lt;</span> <span style="color: #a6e22e">dogs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">length</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-      <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">dog</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">dogs</span><span style="color: #f8f8f2">[</span><span style="color: #a6e22e">data</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">doggyId</span><span style="color: #f8f8f2">];</span>
-      <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">payload</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #a6e22e">name</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">dog</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">getName</span><span style="color: #f8f8f2">(),</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">data</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">doggyId</span><span style="color: #f8f8f2">};</span>
-      <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">token</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">auth</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">signToken</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">payload</span><span style="color: #f8f8f2">);</span>
-      <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">status</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">200</span><span style="color: #f8f8f2">).</span><span style="color: #a6e22e">json</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">token</span><span style="color: #f8f8f2">);</span>
-    <span style="color: #f8f8f2">}</span><span style="color: #66d9ef">else</span><span style="color: #f8f8f2">{</span>
-      <span style="color: #a6e22e">response</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">sendStatus</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">403</span><span style="color: #f8f8f2">);</span>
-    <span style="color: #f8f8f2">}</span>
-  <span style="color: #f8f8f2">});</span>
+        <span style="color: #6ab825; font-weight: bold">if</span><span style="color: #d0d0d0">(data</span> <span style="color: #d0d0d0">&amp;&amp;</span> <span style="color: #d0d0d0">data.doggyId</span> <span style="color: #d0d0d0">&amp;&amp;</span> <span style="color: #d0d0d0">data.doggyId</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">dogs.length)</span> <span style="color: #d0d0d0">{</span>
+            <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">dog</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">dogs[data.doggyId];</span>
+            <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">payload</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{name:</span> <span style="color: #d0d0d0">dog.getName(),</span> <span style="color: #d0d0d0">id:</span> <span style="color: #d0d0d0">data.doggyId};</span>
+            <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">token</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">auth.signToken(payload);</span>
+            <span style="color: #999999; font-style: italic">// set the cookie on the response</span>
+            <span style="color: #d0d0d0">response.cookie(</span><span style="color: #ed9d13">&quot;dogServiceCookie&quot;</span> <span style="color: #d0d0d0">,token);</span>
+            <span style="color: #d0d0d0">response.status(</span><span style="color: #3677a9">200</span><span style="color: #d0d0d0">).json(token);</span>
+        <span style="color: #d0d0d0">}</span><span style="color: #6ab825; font-weight: bold">else</span><span style="color: #d0d0d0">{</span>
+            <span style="color: #d0d0d0">response.sendStatus(</span><span style="color: #3677a9">403</span><span style="color: #d0d0d0">);</span>
+        <span style="color: #d0d0d0">}</span>
+    <span style="color: #d0d0d0">});</span>
 
-<span style="color: #a6e22e">module</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">exports</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">router</span><span style="color: #f8f8f2">;</span>
+<span style="color: #d0d0d0">module.exports</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">router;</span>
 </pre></div>
+
               <div class="ac-caption">loginRoute.js</div>
 
-              <!-- HTML generated using hilite.me -->
-              <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">express</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;express&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">app</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">express</span><span style="color: #f8f8f2">();</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">dogRoute</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./dogRoute&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">goodDogRoute</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./goodDogRoute&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">wiggleRoute</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./wiggleRoute&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">loginRoute</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./loginRoute&#39;</span><span style="color: #f8f8f2">);</span>
+              <!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">express</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;express&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">app</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">express();</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">dogRoute</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./dogRoute&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">goodDogRoute</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./goodDogRoute&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">wiggleRoute</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./wiggleRoute&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">loginRoute</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;./loginRoute&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">cookieParser</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;cookie-parser&#39;</span><span style="color: #d0d0d0">);</span>
 
-<span style="color: #a6e22e">app</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">use</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/dog&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">dogRoute</span><span style="color: #f8f8f2">);</span>
-<span style="color: #a6e22e">app</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">use</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/goodDog&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">goodDogRoute</span><span style="color: #f8f8f2">);</span>
-<span style="color: #a6e22e">app</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">use</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/wiggle&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">wiggleRoute</span><span style="color: #f8f8f2">);</span>
-<span style="color: #a6e22e">app</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">use</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/login&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">loginRoute</span><span style="color: #f8f8f2">);</span>
+<span style="color: #d0d0d0">app.use(cookieParser());</span>
+<span style="color: #d0d0d0">app.use(</span><span style="color: #ed9d13">&#39;/dog&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">dogRoute);</span>
+<span style="color: #d0d0d0">app.use(</span><span style="color: #ed9d13">&#39;/goodDog&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">goodDogRoute);</span>
+<span style="color: #d0d0d0">app.use(</span><span style="color: #ed9d13">&#39;/wiggle&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">wiggleRoute);</span>
+<span style="color: #d0d0d0">app.use(</span><span style="color: #ed9d13">&#39;/login&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">loginRoute);</span>
 
-<span style="color: #a6e22e">app</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">listen</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">8080</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(){</span>
-  <span style="color: #a6e22e">console</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">log</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;Listening on port 8080...&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">});</span>
+<span style="color: #d0d0d0">app.listen(</span><span style="color: #3677a9">8080</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
+    <span style="color: #d0d0d0">console.log(</span><span style="color: #ed9d13">&#39;Listening on port 8080...&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #d0d0d0">});</span>
 </pre></div>
+
               <div class="ac-caption">Adding Login Route To Our Application</div>
 
               <p align="justify">
                 That is all it takes. Now we can test it to see if our operations over Dog Services are working.
+                First of all do a POST call to http://localhost:8080/login , with a doggyId param. It will create a auth cookie on your response, which you can use on the next calls to http://localhost:8080/dog .
               </p>
             </div>
           </section>
@@ -822,7 +833,10 @@
             <p align="justify">In order to understand better the functionality, we are going to study an example. You can check the code for it here: <a href="https://github.com/andrebot/Lecture2-NodeExpressAC/tree/Lecture4/examples/node/Lecture_4/ex2-authentication">Ex2</a> </p>
 
             <p align="justify">As a reference, you can also check this very nice implementation, with different strategies <a href="https://scotch.io/tutorials/easy-node-authentication-setup-and-local">here</a>.</p>
+            
+            <h1 style="color: #ff0000; font-weight: bold" >Andre, gastar mais tempo com o passport </h1>
             </div>
+
           </section>
 
           <!-- Five -->
@@ -833,7 +847,7 @@
               </header>
 
               <p align="justify">Unfortunatelly guys, our course is coming to an end! :( But before that we have something pretty cool! It's time to deploy our app online! </p>
-              <p align="justify">For that, we're going to use Heroku, which is a "Cloud Application Platform" where we can host our server. We choose to deploy our dogs app, because it's very simple and it serves well for our porpuses. If you want, you can get the whole example here: <a href="https://github.com/andrebot/Lecture2-NodeExpressAC/tree/Lecture4/examples/node/Lecture_4/ex3-deploy">Ex3</a></p>
+              <p align="justify">For that, we're going to use Heroku, which is a "Cloud Application Platform" where we can host our server. We choose to deploy our dogs app, because it's very simple and it serves well for our purposes. If you want, you can get the whole example here: <a href="https://github.com/andrebot/Lecture2-NodeExpressAC/tree/Lecture4/examples/node/Lecture_4/ex3-deploy">Ex3</a></p>
               <p align="justify">First you need to have an account, and create an app. To create you can access this <a href="https://dashboard.heroku.com/new">link</a>. After you have to install a tool called Heroku Toolbelt, which you can get <a href="https://toolbelt.heroku.com/">here</a>.</p>
 
               <p align="justify">After that, you will have the command "heroku" available in your terminal. And you can then type "heroku login".</p>

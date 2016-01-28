@@ -131,8 +131,8 @@
 							<li>
                 <p align="justify">
                   <b>Port: </b>each server has a collection of numbered ports. Some port numbers are "special", like 80
-                  and 443. If you omit the port, port 80 is assumed for HTTP and 443 for HTTPS. In general if aren't using
-                  one of those, you should use a port number greater than 1023.
+                  and 443. If you omit the port, port 80 is assumed for HTTP and 443 for HTTPS. In general if you aren't using
+                  none of those, you should use a port number greater than 1023.
                 </p>
 							</li>
 							<li>
@@ -161,7 +161,7 @@
 
             <p align="justify">
               <i>
-                "HTTP (Hypertext Transfer Protocol) is an aplpication protocol for distributed, collaborative, hypermedia
+                "HTTP (Hypertext Transfer Protocol) is an application protocol for distributed, collaborative, hypermedia
                 information systems."
               </i>
               <span style="float: right">- Wikipedia</span>
@@ -295,24 +295,27 @@
               we can be more fancy. What about read some query string from the request?
             </p>
 
-            <!-- HTML generated using hilite.me -->
-            <div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">express</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;express&#39;</span><span style="color: #d0d0d0">);</span>
+            <!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">express</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">require(</span><span style="color: #ed9d13">&#39;express&#39;</span><span style="color: #d0d0d0">);</span>
 <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">app</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">express();</span>
 
 <span style="color: #d0d0d0">app.get(</span><span style="color: #ed9d13">&#39;/&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response)</span> <span style="color: #d0d0d0">{</span>
-  <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">msgStrings</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span><span style="color: #ed9d13">&#39;First String&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;Second String&#39;</span><span style="color: #d0d0d0">];</span>
-  <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">messageIndex</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.query.index;</span>
-  <span style="color: #6ab825; font-weight: bold">if</span><span style="color: #d0d0d0">(messageIndex</span> <span style="color: #d0d0d0">&amp;&amp;</span> <span style="color: #d0d0d0">messageIndex</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">msgStrings.length)</span> <span style="color: #d0d0d0">{</span>
-    <span style="color: #d0d0d0">response.send(msgStrings[messageIndex]);</span>
-  <span style="color: #d0d0d0">}</span> <span style="color: #6ab825; font-weight: bold">else</span> <span style="color: #d0d0d0">{</span>
-    <span style="color: #d0d0d0">response.sendStatus(</span><span style="color: #3677a9">403</span><span style="color: #d0d0d0">);</span>
-  <span style="color: #d0d0d0">}</span>
+    <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">msgStrings</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span><span style="color: #ed9d13">&#39;First String&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;Second String&#39;</span><span style="color: #d0d0d0">];</span>
+    <span style="color: #999999; font-style: italic">// request.query is the query string. In this case we will return the</span>
+    <span style="color: #999999; font-style: italic">// String present on the position msgStrings[index].</span>
+    <span style="color: #999999; font-style: italic">// To test your server, use http://localhost:8080/?index=0</span>
+    <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">messageIndex</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">request.query.index;</span>
+    <span style="color: #6ab825; font-weight: bold">if</span><span style="color: #d0d0d0">(messageIndex</span> <span style="color: #d0d0d0">&amp;&amp;</span> <span style="color: #d0d0d0">messageIndex</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">msgStrings.length)</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">response.send(msgStrings[messageIndex]);</span>
+    <span style="color: #d0d0d0">}</span> <span style="color: #6ab825; font-weight: bold">else</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">response.sendStatus(</span><span style="color: #3677a9">403</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #d0d0d0">}</span>
 <span style="color: #d0d0d0">});</span>
 
 <span style="color: #d0d0d0">app.listen(</span><span style="color: #3677a9">8080</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
-  <span style="color: #d0d0d0">console.log(</span><span style="color: #ed9d13">&#39;Listening on port 8080...&#39;</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #d0d0d0">console.log(</span><span style="color: #ed9d13">&#39;Listening on port 8080...&#39;</span><span style="color: #d0d0d0">);</span>
 <span style="color: #d0d0d0">});</span>
 </pre></div>
+
 
             <div class="ac-caption">Retrieving Query String Data</div>
 
@@ -389,8 +392,8 @@
             </p>
 
             <ul>
-              <li><b>localhost:8080/goodDog:</b> that will return who is a good dog;</li>
-              <li><b>localhost:8080/wiggle:</b> that will wiggle our dog's tail.</li>
+              <li><b><a href="localhost:8080/goodDog">localhost:8080/goodDog</a>:</b> that will return who is a good dog;</li>
+              <li><b><a href="localhost:8080/wiggle">localhost:8080/wiggle:</a></b> that will wiggle our dog's tail.</li>
             </ul>
 
             <p align="justify">
@@ -442,9 +445,9 @@
 
             <ul>
               <li><b>localhost:8080/goodDog/_doggyId_:</b> Where <i>_doggyId_</i> could be replaced by a number like
-                <i>localhost:8080/goodDog/2</i>. This will make puppy 1 says that he is the good dog;</li>
+                <i><a href="localhost:8080/goodDog/2">localhost:8080/goodDog/2</a></i>. This will make puppy 1 says that he is the good dog;</li>
               <li><b>localhost:8080/wiggle/_doggyId_:</b> Where <i>_doggyId_</i> could be replaced by a number like
-                <i>localhost:8080/wiggle/0</i>. This will make Brian wiggle his tail.</li>
+                <i><a href="localhost:8080/wiggle/0">localhost:8080/wiggle/0</a></i>. This will make Brian wiggle his tail.</li>
             </ul>
 
             <p align="justify">
@@ -536,10 +539,12 @@
               method types related to this route? No, we should have a better way! In fact, we have.
             </p>
 
+<h1 style="color: #ff0000; font-weight: bold" >Andre, explica aqui melhor que você está utilizando o chaining (e a paradinha de não ter ; no fim do app.rout(/dog).</h1>
+
             <!-- HTML generated using hilite.me -->
             <div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">...</span>
 
-<span style="color: #d0d0d0">app.route(</span><span style="color: #ed9d13">&#39;/dog&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #d0d0d0">app.route(</span><span style="color: #ed9d13">&#39;/dog&#39;</span><span style="color: #d0d0d0">)</span>
   <span style="color: #d0d0d0">.post(parseUrlencoded,</span><span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response){...})</span>
   <span style="color: #d0d0d0">.put(parseUrlencoded,</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(request,</span> <span style="color: #d0d0d0">response){...})</span>
 
@@ -548,7 +553,7 @@
             <div class="ac-caption">Chaining Route Calls</div>
 
             <p align="justify">
-              That is how I like it! One less variable! Clean code! Smells like vicotry!
+              That is how I like it! One less variable! Clean code! Beautiful code! Smells like victory!
             </p>
           </div>
 				</section>

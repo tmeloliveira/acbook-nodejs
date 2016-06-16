@@ -33,11 +33,15 @@ dogRoute.post(parseUrlencoded, function (request, response) {
 }).put(parseUrlencoded, function (request, response) {
   const data = request.body;
 
-  if (data && data.index && data.name){
-    const dog = dogs[data.index];
-    dog.setName(data.name);
+  if (data && data.index && data.name) {
+    if (data.index < dogs.length) {
+      const dog = dogs[data.index];
+      dog.setName(data.name);
 
-    response.send(`Dog #${data.index} had its name changed to ${dog.getName()}`);
+      response.send(`Dog #${data.index} had its name changed to ${dog.getName()}`);
+    } else {
+      response.sendStatus(500);
+    }
   } else {
     response.sendStatus(403);
   }

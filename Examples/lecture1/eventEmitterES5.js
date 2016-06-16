@@ -1,6 +1,8 @@
-var EventEmitter = require('events').EventEmitter;
+'use strict';
 
-var logger = new EventEmitter();
+const EventEmitter = require('events').EventEmitter;
+
+const logger = new EventEmitter();
 
 logger.on('error', function(message){
   console.log('Error: ' + message);

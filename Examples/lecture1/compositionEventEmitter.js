@@ -1,6 +1,6 @@
 'use strict';
 
-var EventEmitter = require('events').EventEmitter;
+const EventEmitter = require('events').EventEmitter;
 
 const Logger = () => {
   return Object.assign({}, {
@@ -8,7 +8,7 @@ const Logger = () => {
   });
 };
 
-var logger = Logger();
+const logger = Logger();
 
 logger.events.on('error', function(message){
   console.log('Error: ' + message);

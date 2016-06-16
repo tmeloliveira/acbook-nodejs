@@ -1,6 +1,6 @@
 'use strict';
 
-var EventEmitter = require('events').EventEmitter;
+const EventEmitter = require('events').EventEmitter;
 
 class Logger extends EventEmitter {
   constructor () {
@@ -8,7 +8,7 @@ class Logger extends EventEmitter {
   }
 }
 
-var logger = new Logger();
+const logger = new Logger();
 
 console.log('this is logger', logger);
 

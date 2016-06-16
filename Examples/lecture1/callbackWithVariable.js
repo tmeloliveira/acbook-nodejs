@@ -1,6 +1,8 @@
-var message = 'Hi I\'m inside the callback';
+'use strict';
 
-var callback = function () {
+const message = 'Hi I\'m inside the callback';
+
+const callback = function () {
   console.log(message);
 };
 

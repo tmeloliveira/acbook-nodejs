@@ -1,8 +1,8 @@
 'use strict';
 
-var Dog = function(name) {
+const Dog = function(name) {
 
-  var _name = name;
+  let _name = name;
 
   this.whoIsAGoodBoy = function() {
     return _name + ' is a good boy!';

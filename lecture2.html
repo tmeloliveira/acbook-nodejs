@@ -368,30 +368,31 @@
               But this time we will change the Dog class a little bit:
             </p>
 
-            <!-- HTML generated using hilite.me -->
-            <div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">Dog</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(name)</span> <span style="color: #d0d0d0">{</span>
+            <!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #e6db74">&#39;use strict&#39;</span><span style="color: #f8f8f2">;</span>
 
-  <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">_name</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">name;</span>
+<span style="color: #66d9ef">const</span> <span style="color: #a6e22e">Dog</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">name</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
 
-  <span style="color: #6ab825; font-weight: bold">this</span><span style="color: #d0d0d0">.whoIsAGoodBoy</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
-    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">_name</span> <span style="color: #d0d0d0">+</span> <span style="color: #ed9d13">&#39; is a good boy!&#39;</span><span style="color: #d0d0d0">;</span>
-  <span style="color: #d0d0d0">};</span>
+  <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">_name</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">name</span><span style="color: #f8f8f2">;</span>
 
-  <span style="color: #6ab825; font-weight: bold">this</span><span style="color: #d0d0d0">.wiggle</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
-    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">_name</span> <span style="color: #d0d0d0">+</span> <span style="color: #ed9d13">&#39; is wiggling.&#39;</span><span style="color: #d0d0d0">;</span>
-  <span style="color: #d0d0d0">};</span>
+  <span style="color: #66d9ef">this</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">whoIsAGoodBoy</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">_name</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&#39; is a good boy!&#39;</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">};</span>
 
-  <span style="color: #6ab825; font-weight: bold">this</span><span style="color: #d0d0d0">.getName</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
-    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">_name;</span>
-  <span style="color: #d0d0d0">};</span>
+  <span style="color: #66d9ef">this</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">wiggle</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">_name</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&#39; is wiggling.&#39;</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">};</span>
 
-  <span style="color: #6ab825; font-weight: bold">this</span><span style="color: #d0d0d0">.setName</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(newName)</span> <span style="color: #d0d0d0">{</span>
-    <span style="color: #d0d0d0">_name</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">newName;</span>
-  <span style="color: #d0d0d0">}</span>
+  <span style="color: #66d9ef">this</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">getName</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">_name</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">};</span>
 
-<span style="color: #d0d0d0">}</span>
+  <span style="color: #66d9ef">this</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">setName</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newName</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">_name</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">newName</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">}</span>
 
-<span style="color: #d0d0d0">module.exports</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Dog;</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #a6e22e">module</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">exports</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">Dog</span><span style="color: #f8f8f2">;</span>
 </pre></div>
             <div class="ac-caption">New Dog Class</div>
 
@@ -576,7 +577,7 @@
 <span style="color: #66d9ef">const</span> <span style="color: #a6e22e">express</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;express&#39;</span><span style="color: #f8f8f2">);</span>
 <span style="color: #66d9ef">const</span> <span style="color: #a6e22e">Dog</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;./Dog&#39;</span><span style="color: #f8f8f2">);</span>
 <span style="color: #66d9ef">const</span> <span style="color: #a6e22e">app</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">express</span><span style="color: #f8f8f2">();</span>
-<span style="color: #66d9ef">const</span> <span style="color: #a6e22e">dogs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
+<span style="color: #66d9ef">let</span> <span style="color: #a6e22e">dogs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
   <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Dog</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;Brian&#39;</span><span style="color: #f8f8f2">),</span>
   <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Dog</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;Tina Turner&#39;</span><span style="color: #f8f8f2">),</span>
   <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Dog</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;Puppy 1&#39;</span><span style="color: #f8f8f2">),</span>
@@ -643,7 +644,7 @@
 <span style="color: #66d9ef">const</span> <span style="color: #a6e22e">bodyParser</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;body-parser&#39;</span><span style="color: #f8f8f2">);</span>
 <span style="color: #66d9ef">const</span> <span style="color: #a6e22e">parseUrlencoded</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">bodyParser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">urlencoded</span><span style="color: #f8f8f2">({</span><span style="color: #a6e22e">extend</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">});</span>
 <span style="color: #66d9ef">const</span> <span style="color: #a6e22e">app</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">express</span><span style="color: #f8f8f2">();</span>
-<span style="color: #66d9ef">const</span> <span style="color: #a6e22e">dogs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[...];</span>
+<span style="color: #66d9ef">let</span> <span style="color: #a6e22e">dogs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[...];</span>
 
 <span style="color: #75715e">//app.get()...</span>
 

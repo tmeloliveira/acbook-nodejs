@@ -5,7 +5,7 @@ const Dog = require('./dogObjComposition');
 const bodyParser = require('body-parser');
 const parseUrlencoded = bodyParser.urlencoded({extend: false});
 const app = express();
-const dogs = [
+let dogs = [
   Dog('Brian'),
   Dog('Tina Turner'),
   Dog('Puppy 1'),
